@@ -2,626 +2,326 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>机器人行业简报 - 2026年7月</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1e40af',
-                        secondary: '#3b82f6',
-                        accent: '#60a5fa',
-                        neutral: '#f8fafc',
-                        dark: '#0f172a'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-                    },
-                }
-            }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>机器人行业简报 · 2026年7月</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #00a8cc;
+            --accent: #7c3aed;
+            --accent-light: #a78bfa;
+            --bg-dark: #0a0e1a;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(0, 212, 255, 0.15);
+            --border-hover: rgba(0, 212, 255, 0.4);
+            --gradient-1: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+            --gradient-2: linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff);
+            --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.15), 0 0 60px rgba(124, 58, 237, 0.1);
         }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-shadow {
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            }
-            .company-logo {
-                width: 40px;
-                height: 40px;
-                object-fit: contain;
-                border-radius: 8px;
-                background: white;
-                padding: 4px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark); color: var(--text-primary); line-height: 1.7; min-height: 100vh; overflow-x: hidden;
         }
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        .bg-animation::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+            animation: bgPulse 15s ease-in-out infinite;
+        }
+        .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.03;
+            background-image: linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        @keyframes bgPulse { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(2deg); } }
+        .top-bar { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(10, 14, 26, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+        .top-bar-title { font-size: 14px; font-weight: 500; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; }
+        .top-bar-title span { color: var(--primary); font-weight: 700; }
+        .container { max-width: 900px; margin: 0 auto; padding: 80px 24px 60px; }
+        @media (max-width: 768px) { .container { padding: 70px 16px 40px; } }
+        .hero { text-align: center; padding: 40px 0 50px; position: relative; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; color: var(--primary); letter-spacing: 2px; margin-bottom: 24px; animation: fadeInUp 0.6s ease-out; }
+        .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .hero h1 { font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.2; margin-bottom: 16px; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInUp 0.6s ease-out 0.1s both; }
+        .hero-subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; animation: fadeInUp 0.6s ease-out 0.2s both; }
+        .section-divider { height: 1px; background: var(--gradient-2); background-size: 200% 100%; animation: gradientMove 3s linear infinite; margin: 40px 0; border: none; opacity: 0.5; }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        .section-title { font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin: 48px 0 24px; display: flex; align-items: center; gap: 12px; animation: fadeInUp 0.5s ease-out; }
+        .section-title .number { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--gradient-1); border-radius: 8px; font-size: 16px; font-weight: 900; color: white; flex-shrink: 0; }
+        .section-title .text { background: linear-gradient(90deg, var(--text-primary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 20px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+        .card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
+        .card:hover::before { opacity: 1; }
+        .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .card-title .icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 6px; font-size: 14px; }
+        .info-list { list-style: none; padding: 0; }
+        .info-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
+        .info-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary); }
+        .info-list li strong { color: var(--text-primary); font-weight: 600; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 6px; font-size: 12px; color: var(--primary); font-weight: 500; margin-right: 8px; margin-bottom: 8px; }
+        .tag-accent { background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3); color: var(--accent-light); }
+        .company-grid { display: grid; gap: 16px; }
+        .company-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
+        .company-card::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+        .company-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateX(4px); }
+        .company-card:hover::after { opacity: 1; }
+        .company-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+        .company-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .company-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .company-badge { padding: 4px 10px; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 6px; font-size: 11px; color: var(--accent-light); font-weight: 500; }
+        .company-content ul { list-style: none; padding: 0; }
+        .company-content li { position: relative; padding-left: 16px; margin-bottom: 10px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .company-content li::before { content: '›'; position: absolute; left: 0; color: var(--primary); font-weight: 700; font-size: 16px; }
+        .company-content li strong { color: var(--primary); font-weight: 600; }
+        .highlight { color: var(--primary); font-weight: 600; }
+        .highlight-accent { color: var(--accent-light); font-weight: 600; }
+        .note { background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 20px; margin-bottom: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.8; animation: fadeInUp 0.5s ease-out; }
+        .note-icon { color: var(--primary); font-weight: 700; margin-right: 6px; }
+        .footer { text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--border); margin-top: 40px; animation: fadeInUp 0.5s ease-out; }
+        .footer-text { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
+        .footer-brand { font-size: 14px; font-weight: 700; color: var(--primary); margin-top: 8px; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.3); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
+        .sub-heading { font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+        .sub-heading::before { content: ''; width: 4px; height: 16px; background: var(--gradient-1); border-radius: 2px; }
+        @media (max-width: 768px) { .hero { padding: 24px 0 32px; } .card { padding: 20px; } .company-card { padding: 18px; } .company-header { flex-direction: column; } .section-title { margin: 32px 0 16px; } .info-list li { font-size: 14px; } }
+        .company-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .company-logo-img { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: brightness(1.1) contrast(1.1); }
+        .logo-letter { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: white; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+        .author-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-top: 40px; animation: fadeInUp 0.5s ease-out; }
+        .author-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .author-info { display: flex; flex-direction: column; gap: 10px; }
+        .author-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+        .author-item svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; }
+        .author-item strong { color: var(--text-primary); font-weight: 600; }
+        .author-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .trend-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
+        .trend-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
+        .trend-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+        .trend-card:hover::before { opacity: 1; }
+        .trend-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .trend-title .icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); font-size: 16px; }
+        .trend-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
     </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen font-sans">
-    <!-- 顶部导航 -->
-    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
-                        <i class="fa fa-android text-white text-lg"></i>
-                    </div>
-                    <span class="font-bold text-xl text-dark">机器人行业简报</span>
-                </div>
-                <div class="flex items-center space-x-2 text-sm text-slate-500">
-                    <i class="fa fa-calendar"></i>
-                    <span>2026年7月</span>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 主要内容 -->
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- 标题区域 -->
-        <header class="text-center mb-16">
-            <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-primary rounded-full text-sm font-medium mb-6">
-                <i class="fa fa-file-text-o mr-2"></i>
-                行业研究报告
-            </div>
-            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark mb-4 text-shadow leading-tight">
-                机器人行业简报
-            </h1>
-            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
-                2026年7月 · 清洁机器人与具身智能行业动态深度解析
-            </p>
-            <div class="flex justify-center items-center mt-8 space-x-8 text-sm text-slate-500">
-                <div class="flex items-center">
-                    <i class="fa fa-building-o mr-2"></i>
-                    <span>科技卫浴产品团队</span>
-                </div>
-                <div class="flex items-center">
-                    <i class="fa fa-clock-o mr-2"></i>
-                    <span>更新于 2026年7月7日</span>
-                </div>
-            </div>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-overlay"></div>
+    <div class="top-bar"><div class="top-bar-title"><span>ROBOT</span> INDUSTRY BRIEF</div></div>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-badge">月度情报</div>
+            <h1>机器人行业简报</h1>
+            <p class="hero-subtitle">2026年7月</p>
         </header>
-
-        <!-- 第一部分：行业总结及阅读指南 -->
-        <section class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-10 bg-gradient-to-b from-primary to-secondary rounded-full mr-4"></div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-dark">一、本月行业总结及阅读指南</h2>
+        <hr class="section-divider">
+        <section>
+            <h2 class="section-title"><span class="number">一</span><span class="text">本月机器人行业总结及阅读指南</span></h2>
+            <div class="card">
+                <div class="card-title"><span class="icon">📊</span>企业动态</div>
+                <div class="sub-heading">清洁机器人</div>
+                <ul class="info-list">
+                    <li><span class="highlight">杉川</span>整合重组 iRobot，疑似放弃自主品牌 3i</li>
+                    <li><span class="highlight">云鲸</span>继续冲刺 IPO，九阳收购传闻被否认</li>
+                    <li><span class="highlight">追觅</span>内部收缩整合，大量裁员</li>
+                    <li><span class="highlight">银星、尚腾</span>等清洁电器代工企业有进入具身智能行业趋势</li>
+                </ul>
+                <div class="sub-heading">具身智能</div>
+                <ul class="info-list">
+                    <li><span class="highlight">宇树</span>降价，IPO 注册生效，估值 <span class="highlight-accent">420亿</span></li>
+                    <li><span class="highlight">优必选</span>发布 U1 仿真系列，伦理、隐私、续航、产能仍是阻碍</li>
+                    <li><span class="highlight">智元</span>量产能力持续提升，预计 Q3 赴港 IPO，估值 <span class="highlight-accent">400亿+港元</span></li>
+                    <li><span class="highlight">银河通用</span>国资背景强大，拿下国内最大采购订单</li>
+                </ul>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <!-- 企业动态卡片 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="flex items-center mb-5">
-                        <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fa fa-building text-orange-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-dark">企业动态</h3>
+            <div class="card">
+                <div class="card-title"><span class="icon">🔬</span>技术方案动态</div>
+                <ul class="info-list">
+                    <li><strong>新方案：</strong>轮足机器人方案升温，模型路线行业新共识</li>
+                    <li><strong>新要求：</strong>价格下探、核心零部件国产化、量产交付能力成为机器人企业的新要求</li>
+                    <li><strong>新产品：</strong>优必选 U1 仿真人型机器人、Labrador Systems 家庭服务机器人</li>
+                </ul>
+            </div>
+        </section>
+        <hr class="section-divider">
+        <section>
+            <h2 class="section-title"><span class="number">二</span><span class="text">核心企业动态</span></h2>
+            <div class="company-grid">
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #0057B8, #00A3E0)"><span>I</span></div>
+                        <div><div class="company-name">iRobot / 杉川</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
                     </div>
-                    
-                    <div class="mb-5">
-                        <h4 class="font-semibold text-slate-700 mb-3 flex items-center">
-                            <span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
-                            清洁机器人
-                        </h4>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>杉川整合品重组iRobot，疑似放弃自主品牌3i</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>云鲸继续冲刺IPO，九阳收购传闻被否认</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>追觅内部收缩整合，大量裁员</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-blue-500 mt-1 mr-2 text-xs"></i>
-                                <span>银星、尚腾等清洁电器代工企业有进入具身智能行业趋势</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 class="font-semibold text-slate-700 mb-3 flex items-center">
-                            <span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
-                            具身智能
-                        </h4>
-                        <ul class="space-y-2 text-slate-600 text-sm">
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-purple-500 mt-1 mr-2 text-xs"></i>
-                                <span>宇树降价，IPO注册生效，估值420亿</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-purple-500 mt-1 mr-2 text-xs"></i>
-                                <span>优必选发布U1仿真系列，伦理、隐私、续航、产能仍是阻碍</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-purple-500 mt-1 mr-2 text-xs"></i>
-                                <span>智元量产能力持续提升，预计Q3赴港IPO估值400亿+港元</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa fa-tag text-purple-500 mt-1 mr-2 text-xs"></i>
-                                <span>银河通用国资背景强大，拿下国内最大采购订单</span>
-                            </li>
+                    <div class="company-content">
+                        <ul>
+                            <li><strong>2026年1月23日</strong>杉川获得 iRobot 100% 股权</li>
+                            <li><strong>2026年3月</strong>AWE 杉川以 iRobot 为核心，邀请张柏芝站台进行亮相</li>
+                            <li>坊间传闻 iRobot 放弃旗下自主品牌 <span class="highlight">3i</span>，研发团队组建以 iRobot 为主</li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- 技术方案动态卡片 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="flex items-center mb-5">
-                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fa fa-lightbulb-o text-green-600 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-dark">技术方案动态</h3>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #00A4E4, #0066B3)"><span>云</span></div>
+                        <div><div class="company-name">云鲸</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
                     </div>
-                    
-                    <div class="space-y-4">
-                        <div class="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
-                            <div class="flex items-center mb-2">
-                                <i class="fa fa-rocket text-green-600 mr-2"></i>
-                                <h4 class="font-semibold text-green-800">新方案</h4>
-                            </div>
-                            <p class="text-green-700 text-sm">轮足机器人方案升温，模型路线行业新共识</p>
-                        </div>
-
-                        <div class="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100">
-                            <div class="flex items-center mb-2">
-                                <i class="fa fa-line-chart text-blue-600 mr-2"></i>
-                                <h4 class="font-semibold text-blue-800">新要求</h4>
-                            </div>
-                            <p class="text-blue-700 text-sm">价格下探、核心零部件国产化、量产交付能力成为机器人企业的新要求</p>
-                        </div>
-
-                        <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl border border-purple-100">
-                            <div class="flex items-center mb-2">
-                                <i class="fa fa-cube text-purple-600 mr-2"></i>
-                                <h4 class="font-semibold text-purple-800">新产品</h4>
-                            </div>
-                            <p class="text-purple-700 text-sm">优必选U1仿真人型机器人、Labrador Systems家庭服务机器人</p>
-                        </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>国内市场 618 扫地机排名第 5，被小米超越；海外市场全系列降价，销量创新高</li>
+                            <li>2025 年底否认被收购，强调冲刺 IPO；2026 年 4 月联合创始人吴一昊卸任管理职务；2026 年 5 月 CEO 张峻彬再次回应 IPO 各项筹备基本就绪</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #00D4AA, #00A884)"><span>追</span></div>
+                        <div><div class="company-name">追觅</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>追觅近日启动核心战略调整，<span class="highlight">200 多个 BU 收缩整合</span>，全面聚焦智能家庭、户外庭院、智能出行、具身智能四大核心赛道</li>
+                            <li>据内部消息称，边缘 BU 全部裁撤，核心业务 BU 例如清洁电器裁撤比例 <span class="highlight-accent">30%</span>，内部群人数从 1.5w 人快速减少至 1.2w 人后关闭人数查看权限</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #FF6B00, #FF9500)"><span>银</span></div>
+                        <div><div class="company-name">银星智能</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁电器 ODM</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>年产能超百万，全球累计销量突破 <span class="highlight">220 万台</span>，海外订单占比超 95%</li>
+                            <li>2026 年 6 月，"顺德区干部人才通识教育具身智能产业主题沙龙"在银星智能举办，有向具身智能方向延伸意向</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #7B68EE, #5D4FD1)"><span>乐</span></div>
+                        <div><div class="company-name">尚腾科技 / 乐享科技</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span><span class="company-badge">人型机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>为春光科技的子公司，原本主营业务为清洁电器代工业务，2025 年与苏州乐享智能科技签署合作协议，获得 <span class="highlight">4000 万元+</span> 机器人产品订单，代工家庭小型具身智能机器人</li>
+                            <li>乐享科技由前追觅高管郭人杰创业，目前融资已超 <span class="highlight-accent">10 亿</span>，旗下品牌"元点"布局 50cm 小型机器人 M1、全尺寸通用人型 Jupiter、家庭写作机械臂 N1、履带式移动机器人 W1、迪士尼联名陪伴机器人</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #1E88E5, #0D47A1)"><span>宇</span></div>
+                        <div><div class="company-name">宇树科技</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>上交所 2026 年 05 月 26 日公告称宇树 IPO 已进入上会安排，计划募资 <span class="highlight">42.02 亿元</span>；证券时报 2026-07-03 报道其科创板 IPO 注册生效</li>
+                            <li>官方商店显示 Unitree R1 起价 <span class="highlight">2.99 万元</span>起（两年间降幅超 95%），整体机器人价格在下探</li>
+                            <li>2026 年 7 月证监会注册生效，目前估值 <span class="highlight-accent">420 亿</span>，H1 营收预计 10.52-11.28 亿（同比 36%-45%），扣非净利润下滑</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #FF5722, #E64A19)"><span>优</span></div>
+                        <div><div class="company-name">优必选</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>2026 年 6 月发布 <span class="highlight">U1 系列</span>，主打仿生、情感交互、长期记忆、陪伴模型，面向陪伴、康养、接待、教育场景</li>
+                            <li>U1 全渠道订单 <span class="highlight">13,361 台</span>，定金 3000 可退，预计 9 月 16 日开始交付，目前年化产能仅 6000+</li>
+                            <li>优必选宇沐曦合资成立曦选创智，计划 <span class="highlight">2028 年</span>量产自研芯片，为具身智能进一步的"大脑"需求布局</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #9C27B0, #7B1FA2)"><span>智</span></div>
+                        <div><div class="company-name">智元</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>2026 年 6 月 28 日第 <span class="highlight">15,000 台</span>量产下线，量产能力领先</li>
+                            <li>2025 年以 21 亿元收购上纬新材 60%+ 股份（并购借壳），计划 2026 年 Q3 赴港 IPO，目标估值 <span class="highlight-accent">400-500 亿港元</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #00BCD4, #0097A7)"><span>银</span></div>
+                        <div><div class="company-name">银河通用</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>2026 年 3 月 A+ 轮 <span class="highlight">25 亿元</span>，国资背景强大（大基金三期+中信+中银+中国石化+上汽）</li>
+                            <li>6 月获得宜宾高铁站 <span class="highlight">2.36 亿</span>订单，目前已知单笔最大具身智能采购，采购明细：380 台轮式+80 台重载+10 台机器狗+30 台零售舱，总计 <span class="highlight">500 台</span></li>
+                            <li>6 月下旬与宁德时代签署全球战略合作协议</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-logo-wrap">
+                        <div class="logo-letter" style="background: linear-gradient(135deg, #4CAF50, #388E3C)"><span>星</span></div>
+                        <div><div class="company-name">星曼</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">足浴器</span></div></div>
+                    </div>
+                    <div class="company-content">
+                        <ul>
+                            <li>小米投资的足浴器代工厂，给小米进行足浴器品类代工，同步有自营品牌，24 年信息年营收约 <span class="highlight">1 亿</span></li>
+                            <li>足浴器赛道拥有 <span class="highlight">180+ 项专利</span>，其中包含上下水装置和智能移动相关专利，但目前暂未有明确入局智能足浴机器人的布局</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="note"><span class="note-icon">ℹ</span>备注：以上展示核心企业结合品牌影响力、产品关联度、场景关联度和技术发展形态等综合评估纳入，根据每月动态进行增补和修改。</div>
         </section>
-
-        <!-- 第二部分：核心企业动态 -->
-        <section class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-10 bg-gradient-to-b from-primary to-secondary rounded-full mr-4"></div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-dark">二、核心企业动态</h2>
-            </div>
-
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100">
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead>
-                            <tr class="bg-gradient-to-r from-primary to-secondary text-white">
-                                <th class="px-6 py-4 text-left font-semibold text-sm">企业</th>
-                                <th class="px-6 py-4 text-left font-semibold text-sm">主要业务</th>
-                                <th class="px-6 py-4 text-left font-semibold text-sm">近期动态</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-100">
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/OnEs1wjbUH" alt="iRobot" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">iRobot / 杉川</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        清洁机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 2026年1月23日杉川获得iRobot 100%股权</li>
-                                        <li>• 2026年3月AWE杉川以iRobot为核心，邀请张柏芝站台进行亮相</li>
-                                        <li>• 坊间传闻iRobot放弃旗下自主品牌3i，研发团队组建以iRobot为主</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/exhd1wjbUJ" alt="云鲸" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">云鲸</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        清洁机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 国内市场618扫地机排名第5，被小米超越；海外市场全系列降价，销量创新高</li>
-                                        <li>• 2025年底否认被收购，强调冲刺IPO；2026年4月联合创始人吴一昊卸任管理职务</li>
-                                        <li>• 2026年5月CEO张峻彬再次回应IPO各项筹备基本就绪</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/ogxs1wjbUL" alt="追觅" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">追觅</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        清洁机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 追觅近日启动核心战略调整，200多个BU收缩整合，全面聚焦四大核心赛道</li>
-                                        <li>• 边缘BU全部裁撤，核心业务BU例如清洁电器裁撤比例30%</li>
-                                        <li>• 内部群人数从1.5w人快速减少至1.2w人后关闭人数查看权限</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/aJEC1wjbUa" alt="银星智能" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">银星智能</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
-                                        清洁电器ODM
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 年产能超百万，全球累计销量突破220万台，海外订单占比超95%</li>
-                                        <li>• 2026年6月，"顺德区干部人才通识教育具身智能产业主题沙龙"在银星智能举办</li>
-                                        <li>• 有向具身智能方向延伸意向</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mr-3 text-white font-bold text-sm">
-                                            尚
-                                        </div>
-                                        <div>
-                                            <span class="font-semibold text-dark block">尚腾科技</span>
-                                            <span class="text-xs text-slate-500">乐享智能</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col gap-1">
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 w-fit">
-                                            清洁机器人
-                                        </span>
-                                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 w-fit">
-                                            人型机器人
-                                        </span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 为春光科技的子公司，原本主营业务为清洁电器代工业务</li>
-                                        <li>• 2025年与苏州乐享智能科技签署合作协议，获得4000万元+机器人产品订单</li>
-                                        <li>• 乐享科技由前追觅高管郭人杰创业，目前融资已超10亿</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors bg-yellow-50/50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/4Spo1wjbUR" alt="宇树科技" class="company-logo mr-3 bg-black">
-                                        <div>
-                                            <span class="font-semibold text-dark block">宇树科技</span>
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800 mt-1">
-                                                <i class="fa fa-star mr-1"></i>IPO注册生效
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                        人型机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 2026年7月科创板IPO注册生效，目前估值420亿</li>
-                                        <li>• Unitree R1起价2.99万元起（两年间降幅超95%），整体机器人价格在下探</li>
-                                        <li>• H1营收预计10.52-11.28亿（同比36%-45%），扣非净利润下滑</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/Lv2j1wjbUT" alt="优必选" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">优必选</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                        人型机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 2026年6月发布U1系列，主打仿生、情感交互、长期记忆、陪伴模型</li>
-                                        <li>• U1全渠道订单13361台，定金3000可退，预计9月16日开始交付</li>
-                                        <li>• 目前年化产能仅6000+，与宇沐曦合资成立曦选创智，计划2028年量产自研芯片</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/OwpD1wjbUU" alt="智元" class="company-logo mr-3">
-                                        <span class="font-semibold text-dark">智元</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                        人型机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 2026年6月28日第15000台量产下线，量产能力领先</li>
-                                        <li>• 2025年以21亿元收购上纬新材60%+股份（并购借壳）</li>
-                                        <li>• 计划2026年Q3赴港IPO，目标估值400-500亿港元</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors bg-blue-50/50">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <img src="https://aka.doubaocdn.com/s/N82Y1wjbUe" alt="银河通用" class="company-logo mr-3 bg-white">
-                                        <div>
-                                            <span class="font-semibold text-dark block">银河通用</span>
-                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 mt-1">
-                                                <i class="fa fa-trophy mr-1"></i>最大订单
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                        人型机器人
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 2026年3月A+轮25亿元，国资背景强大（大基金三期+中信+中银+中国石化+上汽）</li>
-                                        <li>• 6月获得宜宾高铁站2.36亿订单，目前已知单笔最大具身智能采购</li>
-                                        <li>• 采购明细：380台轮式+80台重载+10台机器狗+30台零售舱，总计500台</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mr-3 text-white font-bold text-sm">
-                                            星
-                                        </div>
-                                        <span class="font-semibold text-dark">星曼</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-cyan-100 text-cyan-800">
-                                        足浴器
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600">
-                                    <ul class="space-y-1">
-                                        <li>• 小米投资的足浴器代工厂，给小米进行足浴器品类代工，同步有自营品牌</li>
-                                        <li>• 24年信息年营收约1亿，足浴器赛道拥有180+项专利</li>
-                                        <li>• 包含上下水装置和智能移动相关专利，但目前暂未有明确布局智能足浴机器人</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+        <hr class="section-divider">
+        <section>
+            <h2 class="section-title"><span class="number">三</span><span class="text">行业技术趋势</span></h2>
+            <div class="trend-card"><div class="trend-title"><span class="icon">🏠</span>家用机器人的三条路径</div><div class="trend-desc">清洁机器人+机械臂+跨楼层能力，双足人型机器人，轮式服务机器人目前成为家用机器人的三条主要路径，其中轮式服务机器人方案升温，降低家庭落地门槛</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">🧠</span>大模型路线收敛</div><div class="trend-desc">VLA（视觉-语言-动作）和 WAM（世界-动作模型）不是二选一而是融合共生是目前行业的共识，模型参数膨胀，后续的核心竞争关键点可能转化为大模型和芯片</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">💰</span>机器人和灵巧手价格下探</div><div class="trend-desc">宇树 R1 下探至 <span class="highlight">2.99 万元</span>起，灵心灵巧手下探至 <span class="highlight">3999 元</span>（精度和寿命仍是核心痛点）</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">🔧</span>核心零部件国产化</div><div class="trend-desc">绿的谐波同比 <span class="highlight">50%+</span>增长，主营谐波减速器，宇树科技推进关节电机完全自研自产</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">📦</span>强调工程交付能力</div><div class="trend-desc">行业开始强调工程化交付能力，智元 AGIBOT 6 月 28 日宣布第 <span class="highlight">15,000 台</span>机器人下线，从产品验证、批量生产走向更大规模交付</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">🤖</span>仿真机器人</div><div class="trend-desc">优必选发布 U1 机器人系列，可进行定制，但伦理/隐私风险仍未有解决方案，另外电池续航 <span class="highlight">2 小时</span>是重大槽点</div></div>
+            <div class="trend-card"><div class="trend-title"><span class="icon">🏡</span>家庭服务机器人</div><div class="trend-desc">Labrador Systems 发布家庭服务机器人，核心方向是取物递送和搬运</div></div>
         </section>
-
-        <!-- 第三部分：行业技术趋势 -->
-        <section class="mb-16">
-            <div class="flex items-center mb-8">
-                <div class="w-1 h-10 bg-gradient-to-b from-primary to-secondary rounded-full mr-4"></div>
-                <h2 class="text-2xl sm:text-3xl font-bold text-dark">三、行业技术趋势</h2>
+        <div class="author-section">
+            <div class="author-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                报告输出信息
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 趋势卡片1 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-blue-200">
-                        <i class="fa fa-home text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">家用机器人的三条路径</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        清洁机器人+机械臂+跨楼层能力，双足人型机器人，轮式服务机器人目前成为家用机器人的三条主要路径，其中轮式服务机器人方案升温，降低家庭落地门槛。
-                    </p>
-                </div>
-
-                <!-- 趋势卡片2 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-purple-200">
-                        <i class="fa fa-microchip text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">大模型路线收敛</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        VLA（视觉-语言-动作）和WAM（世界-动作模型）不是二选一而是融合共生是目前行业的共识，模型参数膨胀，后续的核心竞争关键点可能转化为大模型和芯片。
-                    </p>
-                </div>
-
-                <!-- 趋势卡片3 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-green-200">
-                        <i class="fa fa-tag text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">价格下探</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        机器人和灵巧手价格持续下探，宇树R1下探至2.99万元起，灵心灵巧手下探至3999元，但精度和寿命仍是核心痛点，制约大规模商业化落地。
-                    </p>
-                </div>
-
-                <!-- 趋势卡片4 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-orange-200">
-                        <i class="fa fa-cogs text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">核心零部件国产化</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        绿的谐波同比50%+增长，主营谐波减速器，国产替代加速；宇树科技推进关节电机完全自研自产，供应链自主可控成为核心竞争力。
-                    </p>
-                </div>
-
-                <!-- 趋势卡片5 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-indigo-200">
-                        <i class="fa fa-industry text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">强调工程交付能力</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        行业开始强调工程化交付能力，智元AGIBOT 6月28日宣布第15,000台机器人下线，从产品验证、批量生产走向更大规模交付，量产能力成为分水岭。
-                    </p>
-                </div>
-
-                <!-- 趋势卡片6 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100">
-                    <div class="w-14 h-14 bg-gradient-to-br from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center mb-5 shadow-lg shadow-rose-200">
-                        <i class="fa fa-user-circle-o text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-dark mb-3">仿真机器人</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        优必选发布U1机器人系列，可进行定制，但伦理/隐私风险仍未有解决方案，另外电池续航仅2小时是重大槽点，商业化仍面临多重挑战。
-                    </p>
-                    <div class="mt-3 flex items-center text-xs text-amber-600 bg-amber-50 px-3 py-2 rounded-lg">
-                        <i class="fa fa-exclamation-triangle mr-2"></i>
-                        <span>伦理、隐私、续航、产能待突破</span>
-                    </div>
-                </div>
-
-                <!-- 趋势卡片7 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border border-slate-100 md:col-span-2 lg:col-span-3">
-                    <div class="flex flex-col md:flex-row md:items-center">
-                        <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center mb-5 md:mb-0 md:mr-6 shadow-lg shadow-teal-200 flex-shrink-0">
-                            <i class="fa fa-hand-rock-o text-white text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-dark mb-2">家庭服务机器人</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                Labrador Systems 发布家庭服务机器人，核心方向是取物递送和搬运，聚焦居家养老和辅助生活场景，为行动不便人群提供实用帮助，代表了服务机器人垂直场景落地的新方向。
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="author-info">
+                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><strong>输出团队：</strong>科技卫浴产品团队</div>
+                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><strong>联系人：</strong>毕家沛</div>
+                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><strong>电话：</strong>19928372370</div>
+                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><strong>邮箱：</strong>bijiapei@jomoo.com</div>
             </div>
-        </section>
-
-        <!-- 联系信息 -->
-        <section class="mb-8">
-            <div class="bg-gradient-to-r from-primary to-secondary rounded-2xl p-8 text-white shadow-xl">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 flex items-center">
-                            <i class="fa fa-info-circle mr-3"></i>
-                            报告信息
-                        </h3>
-                        <p class="text-blue-100 mb-4 md:mb-0">
-                            以上报告由科技卫浴产品团队输出，如有任何疑问和咨询，可联系相关负责人
-                        </p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="tel:19928372370" class="inline-flex items-center justify-center px-5 py-3 bg-white/20 hover:bg-white/30 rounded-xl transition-colors backdrop-blur-sm">
-                            <i class="fa fa-phone mr-2"></i>
-                            19928372370
-                        </a>
-                        <a href="mailto:bijiapei@jomoo.com" class="inline-flex items-center justify-center px-5 py-3 bg-white text-primary font-medium rounded-xl hover:bg-blue-50 transition-colors">
-                            <i class="fa fa-envelope mr-2"></i>
-                            bijiapei@jomoo.com
-                        </a>
-                    </div>
-                </div>
-                <div class="mt-6 pt-6 border-t border-white/20 text-sm text-blue-100">
-                    <p class="flex items-center">
-                        <i class="fa fa-user mr-2"></i>
-                        联系人：毕家沛（科技卫浴）
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="bg-white border-t border-slate-200 py-8">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
-            <p>© 2026 机器人行业简报 · 科技卫浴产品团队</p>
-            <p class="mt-2">本报告仅供内部参考使用</p>
+            <div class="author-note">如有任何疑问和咨询，欢迎联系科技卫浴产品团队。本报告仅供内部参考使用。</div>
         </div>
-    </footer>
-
-    <!-- 返回顶部按钮 -->
-    <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
-        <i class="fa fa-arrow-up"></i>
-    </button>
-
+        <footer class="footer">
+            <div class="footer-text">INTERNAL USE ONLY · 仅供内部参考</div>
+            <div class="footer-brand">机器人行业研究组</div>
+        </footer>
+    </div>
     <script>
-        // 返回顶部功能
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.remove('opacity-0', 'invisible');
-                backToTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                backToTopBtn.classList.add('opacity-0', 'invisible');
-                backToTopBtn.classList.remove('opacity-100', 'visible');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+        document.querySelectorAll('.card, .company-card, .trend-card, .section-title').forEach(el => {
+            el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
         });
     </script>
 </body>

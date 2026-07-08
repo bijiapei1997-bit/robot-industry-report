@@ -23,115 +23,327 @@
             --gradient-2: linear-gradient(90deg, #00d4ff, #7c3aed, #00d4ff);
             --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.15), 0 0 60px rgba(124, 58, 237, 0.1);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-dark); color: var(--text-primary); line-height: 1.7; min-height: 100vh; overflow-x: hidden;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+
+        .bg-animation {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; overflow: hidden;
+        }
         .bg-animation::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
             animation: bgPulse 15s ease-in-out infinite;
         }
-        .grid-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.03;
-            background-image: linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
+        .grid-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.03;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px);
             background-size: 50px 50px;
         }
         @keyframes bgPulse { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(2deg); } }
-        .top-bar { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(10, 14, 26, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0; height: 56px;
+            background: rgba(10, 14, 26, 0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; padding: 0 20px;
+        }
         .top-bar-title { font-size: 14px; font-weight: 500; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; }
         .top-bar-title span { color: var(--primary); font-weight: 700; }
+
         .container { max-width: 900px; margin: 0 auto; padding: 80px 24px 60px; }
         @media (max-width: 768px) { .container { padding: 70px 16px 40px; } }
+
         .hero { text-align: center; padding: 40px 0 50px; position: relative; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; background: rgba(0, 212, 255, 0.1); border: 1px solid var(--border); border-radius: 100px; font-size: 12px; color: var(--primary); letter-spacing: 2px; margin-bottom: 24px; animation: fadeInUp 0.6s ease-out; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px; background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--border); border-radius: 100px;
+            font-size: 12px; color: var(--primary); letter-spacing: 2px; margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out;
+        }
         .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-        .hero h1 { font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.2; margin-bottom: 16px; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInUp 0.6s ease-out 0.1s both; }
+
+        .hero h1 {
+            font-size: clamp(28px, 6vw, 48px); font-weight: 900; line-height: 1.2; margin-bottom: 16px;
+            background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+        }
         .hero-subtitle { font-size: 16px; color: var(--text-secondary); margin-bottom: 32px; animation: fadeInUp 0.6s ease-out 0.2s both; }
-        .section-divider { height: 1px; background: var(--gradient-2); background-size: 200% 100%; animation: gradientMove 3s linear infinite; margin: 40px 0; border: none; opacity: 0.5; }
+        .hero-meta {
+            display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+        .meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+        .meta-item svg { width: 16px; height: 16px; color: var(--primary); }
+        .meta-divider { width: 1px; height: 16px; background: var(--border); }
+        @media (max-width: 768px) { .meta-divider { display: none; } .hero-meta { gap: 12px; } }
+
+        .section-divider {
+            height: 1px; background: var(--gradient-2); background-size: 200% 100%;
+            animation: gradientMove 3s linear infinite; margin: 40px 0; border: none; opacity: 0.5;
+        }
         @keyframes gradientMove { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
-        .section-title { font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin: 48px 0 24px; display: flex; align-items: center; gap: 12px; animation: fadeInUp 0.5s ease-out; }
-        .section-title .number { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--gradient-1); border-radius: 8px; font-size: 16px; font-weight: 900; color: white; flex-shrink: 0; }
-        .section-title .text { background: linear-gradient(90deg, var(--text-primary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 20px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+
+        .section-title {
+            font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin: 48px 0 24px;
+            display: flex; align-items: center; gap: 12px; animation: fadeInUp 0.5s ease-out;
+        }
+        .section-title .number {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; background: var(--gradient-1); border-radius: 8px;
+            font-size: 16px; font-weight: 900; color: white; flex-shrink: 0;
+        }
+        .section-title .text {
+            background: linear-gradient(90deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            padding: 28px; margin-bottom: 20px; transition: all 0.3s ease;
+            position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease;
+        }
         .card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
         .card:hover::before { opacity: 1; }
-        .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-        .card-title .icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 6px; font-size: 14px; }
+        .card-title {
+            font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .card-title .icon {
+            width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 212, 255, 0.1); border-radius: 6px; font-size: 14px;
+        }
+
         .info-list { list-style: none; padding: 0; }
-        .info-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
-        .info-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary); }
+        .info-list li {
+            position: relative; padding-left: 20px; margin-bottom: 12px;
+            color: var(--text-secondary); font-size: 15px; line-height: 1.7;
+        }
+        .info-list li::before {
+            content: ''; position: absolute; left: 0; top: 10px;
+            width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary);
+        }
         .info-list li strong { color: var(--text-primary); font-weight: 600; }
-        .tag { display: inline-block; padding: 4px 12px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 6px; font-size: 12px; color: var(--primary); font-weight: 500; margin-right: 8px; margin-bottom: 8px; }
-        .tag-accent { background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3); color: var(--accent-light); }
+
+        .tag {
+            display: inline-block; padding: 4px 12px; background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 6px;
+            font-size: 12px; color: var(--primary); font-weight: 500; margin-right: 8px; margin-bottom: 8px;
+        }
+        .tag-accent {
+            background: rgba(124, 58, 237, 0.1); border-color: rgba(124, 58, 237, 0.3); color: var(--accent-light);
+        }
+
         .company-grid { display: grid; gap: 16px; }
-        .company-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
-        .company-card::after { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+        .company-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+            padding: 24px; transition: all 0.3s ease; position: relative; overflow: hidden;
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .company-card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease;
+        }
         .company-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateX(4px); }
         .company-card:hover::after { opacity: 1; }
-        .company-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+
+        .company-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 16px; flex-wrap: wrap; gap: 10px;
+        }
         .company-name { font-size: 18px; font-weight: 700; color: var(--text-primary); }
         .company-badges { display: flex; gap: 8px; flex-wrap: wrap; }
-        .company-badge { padding: 4px 10px; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 6px; font-size: 11px; color: var(--accent-light); font-weight: 500; }
+        .company-badge {
+            padding: 4px 10px; background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 6px;
+            font-size: 11px; color: var(--accent-light); font-weight: 500;
+        }
         .company-content ul { list-style: none; padding: 0; }
-        .company-content li { position: relative; padding-left: 16px; margin-bottom: 10px; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .company-content li {
+            position: relative; padding-left: 16px; margin-bottom: 10px;
+            color: var(--text-secondary); font-size: 14px; line-height: 1.7;
+        }
         .company-content li::before { content: '›'; position: absolute; left: 0; color: var(--primary); font-weight: 700; font-size: 16px; }
         .company-content li strong { color: var(--primary); font-weight: 600; }
+
         .highlight { color: var(--primary); font-weight: 600; }
         .highlight-accent { color: var(--accent-light); font-weight: 600; }
-        .note { background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-top: 20px; margin-bottom: 20px; font-size: 13px; color: var(--text-muted); line-height: 1.8; animation: fadeInUp 0.5s ease-out; }
+
+        .note {
+            background: rgba(0, 212, 255, 0.05); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px 24px; margin-top: 20px; margin-bottom: 20px;
+            font-size: 13px; color: var(--text-muted); line-height: 1.8; animation: fadeInUp 0.5s ease-out;
+        }
         .note-icon { color: var(--primary); font-weight: 700; margin-right: 6px; }
-        .footer { text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--border); margin-top: 40px; animation: fadeInUp 0.5s ease-out; }
+
+        .footer {
+            text-align: center; padding: 40px 0 20px; border-top: 1px solid var(--border);
+            margin-top: 40px; animation: fadeInUp 0.5s ease-out;
+        }
         .footer-text { font-size: 12px; color: var(--text-muted); letter-spacing: 1px; }
         .footer-brand { font-size: 14px; font-weight: 700; color: var(--primary); margin-top: 8px; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-dark); }
         ::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.3); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
-        .sub-heading { font-size: 16px; font-weight: 600; color: var(--text-primary); margin: 24px 0 12px; display: flex; align-items: center; gap: 8px; }
+
+        /* 打印样式：避免分页截断 */
+        @media print {
+            @page {
+                size: 210mm 2600mm;
+                margin: 12mm;
+            }
+            .card, .company-card, .trend-card, .note, .author-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .section-title {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            .company-logo-wrap {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
+        .sub-heading {
+            font-size: 16px; font-weight: 600; color: var(--text-primary);
+            margin: 24px 0 12px; display: flex; align-items: center; gap: 8px;
+        }
         .sub-heading::before { content: ''; width: 4px; height: 16px; background: var(--gradient-1); border-radius: 2px; }
-        @media (max-width: 768px) { .hero { padding: 24px 0 32px; } .card { padding: 20px; } .company-card { padding: 18px; } .company-header { flex-direction: column; } .section-title { margin: 32px 0 16px; } .info-list li { font-size: 14px; } }
-        .company-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-        .company-logo-img { height: 36px; width: auto; max-width: 120px; object-fit: contain; filter: brightness(1.1) contrast(1.1); }
-        .logo-letter { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: white; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-        .author-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-top: 40px; animation: fadeInUp 0.5s ease-out; }
-        .author-title { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-        .author-info { display: flex; flex-direction: column; gap: 10px; }
-        .author-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .hero { padding: 24px 0 32px; }
+            .card { padding: 20px; }
+            .company-card { padding: 18px; }
+            .company-header { flex-direction: column; }
+            .section-title { margin: 32px 0 16px; }
+            .info-list li { font-size: 14px; }
+        }
+
+        /* Logo 样式 */
+        .company-logo-wrap {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+        }
+        .company-logo-img {
+            height: 36px; width: auto; max-width: 120px;
+            object-fit: contain; filter: brightness(1.1) contrast(1.1);
+        }
+        .logo-letter {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: 900; color: white;
+            flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* 输出人信息 */
+        .author-section {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            padding: 28px; margin-top: 40px; animation: fadeInUp 0.5s ease-out;
+        }
+        .author-title {
+            font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .author-info {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .author-item {
+            display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-secondary);
+        }
         .author-item svg { width: 16px; height: 16px; color: var(--primary); flex-shrink: 0; }
         .author-item strong { color: var(--text-primary); font-weight: 600; }
-        .author-note { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); line-height: 1.7; }
-        .trend-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; margin-bottom: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out; }
+        .author-note {
+            margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
+            font-size: 13px; color: var(--text-muted); line-height: 1.7;
+        }
+
+        /* 技术趋势卡片 */
+        .trend-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+            padding: 24px; margin-bottom: 16px; transition: all 0.3s ease;
+            position: relative; overflow: hidden; animation: fadeInUp 0.5s ease-out;
+        }
         .trend-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-glow); transform: translateY(-2px); }
-        .trend-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease; }
+        .trend-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: var(--gradient-1); opacity: 0; transition: opacity 0.3s ease;
+        }
         .trend-card:hover::before { opacity: 1; }
-        .trend-title { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .trend-title .icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); font-size: 16px; }
-        .trend-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
+        .trend-title {
+            font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .trend-title .icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 212, 255, 0.1); font-size: 16px;
+        }
+        .trend-desc {
+            font-size: 14px; color: var(--text-secondary); line-height: 1.8;
+        }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
     <div class="grid-overlay"></div>
-    <div class="top-bar"><div class="top-bar-title"><span>ROBOT</span> INDUSTRY BRIEF</div></div>
+
+    <div class="top-bar">
+        <div class="top-bar-title"><span>ROBOT</span> INDUSTRY BRIEF</div>
+    </div>
+
     <div class="container">
+        <!-- 头部 -->
         <header class="hero">
             <div class="hero-badge">月度情报</div>
             <h1>机器人行业简报</h1>
             <p class="hero-subtitle">2026年7月</p>
         </header>
+
         <hr class="section-divider">
+
+        <!-- 第一部分 -->
         <section>
-            <h2 class="section-title"><span class="number">一</span><span class="text">本月机器人行业总结及阅读指南</span></h2>
+            <h2 class="section-title">
+                <span class="number">一</span>
+                <span class="text">本月机器人行业总结及阅读指南</span>
+            </h2>
+
             <div class="card">
-                <div class="card-title"><span class="icon">📊</span>企业动态</div>
+                <div class="card-title">
+                    <span class="icon">📊</span>
+                    企业动态
+                </div>
+                
                 <div class="sub-heading">清洁机器人</div>
                 <ul class="info-list">
                     <li><span class="highlight">杉川</span>整合重组 iRobot，疑似放弃自主品牌 3i</li>
@@ -139,6 +351,7 @@
                     <li><span class="highlight">追觅</span>内部收缩整合，大量裁员</li>
                     <li><span class="highlight">银星、尚腾</span>等清洁电器代工企业有进入具身智能行业趋势</li>
                 </ul>
+
                 <div class="sub-heading">具身智能</div>
                 <ul class="info-list">
                     <li><span class="highlight">宇树</span>降价，IPO 注册生效，估值 <span class="highlight-accent">420亿</span></li>
@@ -147,8 +360,12 @@
                     <li><span class="highlight">银河通用</span>国资背景强大，拿下国内最大采购订单</li>
                 </ul>
             </div>
+
             <div class="card">
-                <div class="card-title"><span class="icon">🔬</span>技术方案动态</div>
+                <div class="card-title">
+                    <span class="icon">🔬</span>
+                    技术方案动态
+                </div>
                 <ul class="info-list">
                     <li><strong>新方案：</strong>轮足机器人方案升温，模型路线行业新共识</li>
                     <li><strong>新要求：</strong>价格下探、核心零部件国产化、量产交付能力成为机器人企业的新要求</li>
@@ -156,14 +373,28 @@
                 </ul>
             </div>
         </section>
+
         <hr class="section-divider">
+
+        <!-- 第二部分 -->
         <section>
-            <h2 class="section-title"><span class="number">二</span><span class="text">核心企业动态</span></h2>
+            <h2 class="section-title">
+                <span class="number">二</span>
+                <span class="text">核心企业动态</span>
+            </h2>
+
             <div class="company-grid">
+                <!-- 杉川/iRobot -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #0057B8, #00A3E0)"><span>I</span></div>
-                        <div><div class="company-name">iRobot / 杉川</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
+                        <img src="logos/irobot.png" alt="iRobot / 杉川" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #0057B8, #00A3E0)"><span>I</span></div>
+                        <div>
+                            <div class="company-name">iRobot / 杉川</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">清洁机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -173,10 +404,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 云鲸 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #00A4E4, #0066B3)"><span>云</span></div>
-                        <div><div class="company-name">云鲸</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
+                        <img src="logos/云鲸.png" alt="云鲸" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #00A4E4, #0066B3)"><span>云</span></div>
+                        <div>
+                            <div class="company-name">云鲸</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">清洁机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -185,10 +424,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 追觅 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #00D4AA, #00A884)"><span>追</span></div>
-                        <div><div class="company-name">追觅</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span></div></div>
+                        <img src="logos/追觅.png" alt="追觅" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #00D4AA, #00A884)"><span>追</span></div>
+                        <div>
+                            <div class="company-name">追觅</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">清洁机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -197,10 +444,17 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 银星智能 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
                         <div class="logo-letter" style="background: linear-gradient(135deg, #FF6B00, #FF9500)"><span>银</span></div>
-                        <div><div class="company-name">银星智能</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁电器 ODM</span></div></div>
+                        <div>
+                            <div class="company-name">银星智能</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">清洁电器 ODM</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -209,10 +463,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 尚腾科技/乐享科技 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
                         <div class="logo-letter" style="background: linear-gradient(135deg, #7B68EE, #5D4FD1)"><span>乐</span></div>
-                        <div><div class="company-name">尚腾科技 / 乐享科技</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">清洁机器人</span><span class="company-badge">人型机器人</span></div></div>
+                        <div>
+                            <div class="company-name">尚腾科技 / 乐享科技</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">清洁机器人</span>
+                                <span class="company-badge">人型机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -221,10 +483,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 宇树科技 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #1E88E5, #0D47A1)"><span>宇</span></div>
-                        <div><div class="company-name">宇树科技</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                        <img src="logos/宇树.png" alt="宇树科技" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #1E88E5, #0D47A1)"><span>宇</span></div>
+                        <div>
+                            <div class="company-name">宇树科技</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">人型机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -234,10 +504,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 优必选 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #FF5722, #E64A19)"><span>优</span></div>
-                        <div><div class="company-name">优必选</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                        <img src="logos/优必选.png" alt="优必选" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #FF5722, #E64A19)"><span>优</span></div>
+                        <div>
+                            <div class="company-name">优必选</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">人型机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -247,10 +525,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 智元 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #9C27B0, #7B1FA2)"><span>智</span></div>
-                        <div><div class="company-name">智元</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                        <img src="logos/智元.png" alt="智元" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #9C27B0, #7B1FA2)"><span>智</span></div>
+                        <div>
+                            <div class="company-name">智元</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">人型机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -259,10 +545,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 银河通用 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #00BCD4, #0097A7)"><span>银</span></div>
-                        <div><div class="company-name">银河通用</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">人型机器人</span></div></div>
+                        <img src="logos/银河通用.png" alt="银河通用" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #00BCD4, #0097A7)"><span>银</span></div>
+                        <div>
+                            <div class="company-name">银河通用</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">人型机器人</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -272,10 +566,18 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- 星曼 -->
                 <div class="company-card">
                     <div class="company-logo-wrap">
-                        <div class="logo-letter" style="background: linear-gradient(135deg, #4CAF50, #388E3C)"><span>星</span></div>
-                        <div><div class="company-name">星曼</div><div class="company-badges" style="margin-top:6px"><span class="company-badge">足浴器</span></div></div>
+                        <img src="logos/星曼.png" alt="星曼" class="company-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="logo-letter" style="display:none; background: linear-gradient(135deg, #4CAF50, #388E3C)"><span>星</span></div>
+                        <div>
+                            <div class="company-name">星曼</div>
+                            <div class="company-badges" style="margin-top:6px">
+                                <span class="company-badge">足浴器</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="company-content">
                         <ul>
@@ -285,43 +587,145 @@
                     </div>
                 </div>
             </div>
-            <div class="note"><span class="note-icon">ℹ</span>备注：以上展示核心企业结合品牌影响力、产品关联度、场景关联度和技术发展形态等综合评估纳入，根据每月动态进行增补和修改。</div>
+
+            <!-- 备注 -->
+            <div class="note">
+                <span class="note-icon">ℹ</span>
+                备注：以上展示核心企业结合品牌影响力、产品关联度、场景关联度和技术发展形态等综合评估纳入，根据每月动态进行增补和修改。
+            </div>
         </section>
+
         <hr class="section-divider">
+
+        <!-- 第三部分：行业技术趋势 -->
         <section>
-            <h2 class="section-title"><span class="number">三</span><span class="text">行业技术趋势</span></h2>
-            <div class="trend-card"><div class="trend-title"><span class="icon">🏠</span>家用机器人的三条路径</div><div class="trend-desc">清洁机器人+机械臂+跨楼层能力，双足人型机器人，轮式服务机器人目前成为家用机器人的三条主要路径，其中轮式服务机器人方案升温，降低家庭落地门槛</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">🧠</span>大模型路线收敛</div><div class="trend-desc">VLA（视觉-语言-动作）和 WAM（世界-动作模型）不是二选一而是融合共生是目前行业的共识，模型参数膨胀，后续的核心竞争关键点可能转化为大模型和芯片</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">💰</span>机器人和灵巧手价格下探</div><div class="trend-desc">宇树 R1 下探至 <span class="highlight">2.99 万元</span>起，灵心灵巧手下探至 <span class="highlight">3999 元</span>（精度和寿命仍是核心痛点）</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">🔧</span>核心零部件国产化</div><div class="trend-desc">绿的谐波同比 <span class="highlight">50%+</span>增长，主营谐波减速器，宇树科技推进关节电机完全自研自产</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">📦</span>强调工程交付能力</div><div class="trend-desc">行业开始强调工程化交付能力，智元 AGIBOT 6 月 28 日宣布第 <span class="highlight">15,000 台</span>机器人下线，从产品验证、批量生产走向更大规模交付</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">🤖</span>仿真机器人</div><div class="trend-desc">优必选发布 U1 机器人系列，可进行定制，但伦理/隐私风险仍未有解决方案，另外电池续航 <span class="highlight">2 小时</span>是重大槽点</div></div>
-            <div class="trend-card"><div class="trend-title"><span class="icon">🏡</span>家庭服务机器人</div><div class="trend-desc">Labrador Systems 发布家庭服务机器人，核心方向是取物递送和搬运</div></div>
+            <h2 class="section-title">
+                <span class="number">三</span>
+                <span class="text">行业技术趋势</span>
+            </h2>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">🏠</span>
+                    家用机器人的三条路径
+                </div>
+                <div class="trend-desc">
+                    清洁机器人+机械臂+跨楼层能力，双足人型机器人，轮式服务机器人目前成为家用机器人的三条主要路径，其中轮式服务机器人方案升温，降低家庭落地门槛
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">🧠</span>
+                    大模型路线收敛
+                </div>
+                <div class="trend-desc">
+                    VLA（视觉-语言-动作）和 WAM（世界-动作模型）不是二选一而是融合共生是目前行业的共识，模型参数膨胀，后续的核心竞争关键点可能转化为大模型和芯片
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">💰</span>
+                    机器人和灵巧手价格下探
+                </div>
+                <div class="trend-desc">
+                    宇树 R1 下探至 <span class="highlight">2.99 万元</span>起，灵心灵巧手下探至 <span class="highlight">3999 元</span>（精度和寿命仍是核心痛点）
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">🔧</span>
+                    核心零部件国产化
+                </div>
+                <div class="trend-desc">
+                    绿的谐波同比 <span class="highlight">50%+</span>增长，主营谐波减速器，宇树科技推进关节电机完全自研自产
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">📦</span>
+                    强调工程交付能力
+                </div>
+                <div class="trend-desc">
+                    行业开始强调工程化交付能力，智元 AGIBOT 6 月 28 日宣布第 <span class="highlight">15,000 台</span>机器人下线，从产品验证、批量生产走向更大规模交付
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">🤖</span>
+                    仿真机器人
+                </div>
+                <div class="trend-desc">
+                    优必选发布 U1 机器人系列，可进行定制，但伦理/隐私风险仍未有解决方案，另外电池续航 <span class="highlight">2 小时</span>是重大槽点
+                </div>
+            </div>
+
+            <div class="trend-card">
+                <div class="trend-title">
+                    <span class="icon">🏡</span>
+                    家庭服务机器人
+                </div>
+                <div class="trend-desc">
+                    Labrador Systems 发布家庭服务机器人，核心方向是取物递送和搬运
+                </div>
+            </div>
         </section>
+
+        <!-- 报告输出人信息 -->
         <div class="author-section">
             <div class="author-title">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 报告输出信息
             </div>
             <div class="author-info">
-                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><strong>输出团队：</strong>科技卫浴产品团队</div>
-                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><strong>联系人：</strong>毕家沛</div>
-                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><strong>电话：</strong>19928372370</div>
-                <div class="author-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><strong>邮箱：</strong>bijiapei@jomoo.com</div>
+                <div class="author-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <strong>输出团队：</strong>科技卫浴产品团队
+                </div>
+                <div class="author-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <strong>联系人：</strong>毕家沛
+                </div>
+                <div class="author-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <strong>电话：</strong>19928372370
+                </div>
+                <div class="author-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <strong>邮箱：</strong>bijiapei@jomoo.com
+                </div>
             </div>
-            <div class="author-note">如有任何疑问和咨询，欢迎联系科技卫浴产品团队。本报告仅供内部参考使用。</div>
+            <div class="author-note">
+                如有任何疑问和咨询，欢迎联系科技卫浴产品团队。本报告仅供内部参考使用。
+            </div>
         </div>
+
+        <!-- 底部 -->
         <footer class="footer">
             <div class="footer-text">INTERNAL USE ONLY · 仅供内部参考</div>
             <div class="footer-brand">机器人行业研究组</div>
         </footer>
     </div>
+
     <script>
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
         }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
         document.querySelectorAll('.card, .company-card, .trend-card, .section-title').forEach(el => {
-            el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el);
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>

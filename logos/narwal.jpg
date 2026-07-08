@@ -1,0 +1,46 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=Edge"/><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=contain"/><meta name="apple-mobile-web-app-title" content="云鲸"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta http-equiv="X-UA Compatible" content="IE=edge"/><link rel="shortcut icon" href="/favicon.ico" data-original-href="/favicon.ico"/><title>云鲸智能-官方网站</title><meta name="keywords" content="云鲸NARWAL, 云鲸智能"/><meta name="description" content='云鲸NARWAL,立足家用智能清洁电器领域,致力于研发革命性科技产品,同时也是一个倡导"自由自在,有所热爱"的生活方式品牌。我们希望用新科技将人解放出来,让用户过上更自由、有所热爱的生活。'/><meta name="twitter:card" content="photo"/><meta name="twitter:title" content="云鲸智能-官方网站"/><meta name="twitter:image" content="https://image-www.narwal.com/image/share/narwal.jpg"/><meta name="twitter:description" content='云鲸NARWAL,立足家用智能清洁电器领域,致力于研发革命性科技产品,同时也是一个倡导"自由自在,有所热爱"的生活方式品牌。我们希望用新科技将人解放出来,让用户过上更自由、有所热爱的生活。'/><meta property="og:site_name" content="NARWAL Official"/><meta property="og:type" content="website"/><meta property="og:url" content="https://www.narwal.com"/><meta property="og:title" content="云鲸智能-官方网站"/><meta property="og:description" content='云鲸NARWAL,立足家用智能清洁电器领域,致力于研发革命性科技产品,同时也是一个倡导"自由自在,有所热爱"的生活方式品牌。我们希望用新科技将人解放出来,让用户过上更自由、有所热爱的生活。'/><meta property="og:image" content="https://image-www.narwal.com/image/share/narwal.jpg"/><meta itemprop="image" content="https://image-www.narwal.com/image/share/narwal.jpg"/><script>window.__GLOBAL_SITE__ = 'zh-cn';</script><script>var _hmt = _hmt || [];
+            (function() {
+                if (window.location.href.includes('narwal.com')) {
+                    var hm = document.createElement('script');
+                    hm.src =
+                        'https://hm.baidu.com/hm.js?b4a12f8f927cc3c0ad0b417cbdd69726';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(hm, s);
+                }
+            })();</script><script>(function(h, o, u, n, d) {
+                h = h[d] = h[d] || {
+                    q: [],
+                    onReady: function(c) {
+                        h.q.push(c);
+                    }
+                };
+                d = o.createElement(u);
+                d.async = 1;
+                d.src = n;
+                n = o.getElementsByTagName(u)[0];
+                n.parentNode.insertBefore(d, n);
+            })(
+                window,
+                document,
+                'script',
+                'https://static.guance.com/browser-sdk/v3/dataflux-rum.js',
+                'DATAFLUX_RUM'
+            );
+            DATAFLUX_RUM.onReady(function() {
+                DATAFLUX_RUM.init({
+                    applicationId: 'narwal_website',
+                    site: 'https://cn4-rum-openway.guance.com',
+                    clientToken: '6db856a0db7f46e19256c941531a1574',
+                    env: 'production',
+                    version: '1.0.0',
+                    service: 'browser',
+                    sessionSampleRate: 100,
+                    sessionReplaySampleRate: 70,
+                    compressIntakeRequests: true,
+                    trackInteractions: true,
+                    traceType: 'ddtrace', // 非必填，默认为ddtrace，目前支持 ddtrace、zipkin、skywalking_v3、jaeger、zipkin_single_header、w3c_traceparent 6种类型
+                    allowedTracingOrigins: [] // 非必填，允许注入trace采集器所需header头部的所有请求列表。可以是请求的origin，也可以是是正则
+                });
+                window.DATAFLUX_RUM &&
+                    window.DATAFLUX_RUM.startSessionReplayRecording();
+            });</script></head><body class="zh-font"><div id="app"></div><script src="https://cn.narwal.com/js/main.32e5491.js"></script></body><link rel="stylesheet" href="https://image-www.narwal.com/assets/font/font-family/zh/heavy/font.css"/><link rel="stylesheet" href="https://image-www.narwal.com/assets/font/font-family/zh/mplus/font.css"/><link rel="stylesheet" href="https://image-www.narwal.com/assets/font/font-family/zh/light/font.css"/><link rel="stylesheet" href="https://image-www.narwal.com/assets/font/font-family/zh/medium/font.css"/><link rel="stylesheet" href="https://image-www.narwal.com/assets/font/font-family/zh/regular/font.css"/></html>
